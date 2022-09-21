@@ -45,7 +45,7 @@ async function getValueAtAddress(host, deployedContractAbi, deployedContractAddr
   //const web3 = new Web3(provider);
   const contractInstance = new web3.eth.Contract(deployedContractAbi, deployedContractAddress);
   const res = await contractInstance.methods.get().call();
-  //console.log("Obtained value at deployed contract is: "+ res);
+  console.log("Obtained value at deployed contract is: "+ res);
   return res
 }
 
@@ -98,12 +98,12 @@ async function main(){
    const account = web3.eth.accounts.privateKeyToAccount(privateKey);
    console.log('contract deployed at address: ' +txReceipt.contractAddress);
    //console.log("Use the smart contracts 'get' function to read the contract's constructor initialized value .. " )
-   await getValueAtAddress(host, contractAbi, txReceipt.contractAddress);
-   //console.log("Use the smart contracts 'set' function to update that value to 123 .. " );
-   await setValueAtAddress(host, account.address,'32', contractAbi, txReceipt.contractAddress, privateKey );
+   //await getValueAtAddress(host, contractAbi, txReceipt.contractAddress);
+   //console.log("Use the smart contracts 'set' function to update that value to 32 .. " );
+   //await setValueAtAddress(host, account.address,'32', contractAbi, txReceipt.contractAddress, privateKey );
    //console.log("Verify the updated value that was set .. " )
-   await getValueAtAddress(host, contractAbi, txReceipt.contractAddress);
-   await getAllPastEvents(host, contractAbi, txReceipt.contractAddress);
+   //await getValueAtAddress(host, contractAbi, txReceipt.contractAddress);
+   //await getAllPastEvents(host, contractAbi, txReceipt.contractAddress);
    fsW.writeFile('ContractAddress.txt', txReceipt.contractAddress, (err) => {
 
        // In case of a error throw err.
