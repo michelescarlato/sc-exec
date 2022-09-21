@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register information at Blockchain</title>
+
+    <!--import Graphic lib-->
+    <!--<link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' rel='stylesheet' type='text/css'>-->
+    <link href='bootstrap.min.css' rel='stylesheet' type='text/css'>
+    <!--<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>-->
+    <!--<script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>-->
+    <!--import ethers lib-->
+    <!--<script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>-->
+    <script src="ethers-5.2.umd.min.js" type="application/javascript"></script>
+    <!--import script interaction smart contract-->
+    <script src="Dapp1.js"></script>
+</head>
+
+<body class="container">
+
+
+    <h1 class="page-header">Register information at Blockchain - BESU network</h1>
+
+    <div class="row">
+        <div>
+            <h3 class="sub-header">Set information</h3>
+            <form class="form-inline" role="form">
+                <div class="form-group">
+                    <table>
+                        <tr>
+                            <td><label for="newInfo">Info:</label> </td>
+                            <td>
+                                <input class="form-control" id="newInfo">
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <!--call function "setValue" by script "Dapp1.js" on event "onClick"-->
+                <a href="#" onclick="setValue()" class="btn btn-primary">Set</a>
+            </form>
+        </div>
+    </div>
+
+    <div class="row">
+        <div>
+            <h3 class="sub-header">Get last information saved</h3>
+            <form class="form-inline" role="form">
+                <!--call function "getValue" by script "Dapp1.js" on event "onClick"-->
+                <a href="#" onclick="getValue()" class="btn btn-primary">Get</a>
+                <div class="form-group">
+                    <table>
+                        <tr>
+                            <td>Info:</td>
+                            <td>
+                                <!--call function "setValue" by script "Dapp1.js" on event "onClick"-->
+                                <label id="xbalance">
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>
