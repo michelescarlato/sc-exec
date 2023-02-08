@@ -1,3 +1,8 @@
+# Context
+
+This SC can be executed in Besu.
+Currently only a get and set methods are implemented.
+
 # Dependencies
 
 ```
