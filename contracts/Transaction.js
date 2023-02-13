@@ -73,15 +73,28 @@ async function getAllPastEvents(host, deployedContractAbi, deployedContractAddre
   return res
 }
 
-async function main(){
-  contractDdeployedAtAddress= "0x32E938F9e447e0fF0355D7E5EB3C71FF95D318F8";
-  console.log('Indirizzo contract Address: ' +contractDdeployedAtAddress);
-  console.log("Use the smart contracts 'get' function to read the contract's constructor initialized value .. " )
-  await getValueAtAddress(host, contractAbi, contractDdeployedAtAddress);
-  console.log("Use the smart contracts 'set' function to update that value to 123 .. " );
-  await setValueAtAddress(host, account.address,'1187', contractAbi, contractDdeployedAtAddress );
-  console.log("Verify the updated value that was set .. " )
-  await getValueAtAddress(host, contractAbi, contractDdeployedAtAddress);
-
+async function getContractAddress(filename){
+  // get filesystem module
+  const fs = require("fs");
+  // using the readFileSync() function
+  // and passing the path to the file
+  const buffer = fs.readFileSync(filename);
+  // use the toString() method to convert
+  // Buffer into String
+  const fileContent = buffer.toString();
+  console.log(fileContent);
+  return fileContent
 }
+
+async function main(){
+  contractDeployedAtAddress=await getContractAddress ("ContractAddress.txt");  
+  console.log('Indirizzo contract Address: ' +contractDeployedAtAddress);
+  console.log("Use the smart contracts 'get' function to read the contract's constructor initialized value .. " )
+  await getValueAtAddress(host, contractAbi, contractDeployedAtAddress);
+  console.log("Use the smart contracts 'set' function to update that value to 1187 .. " );
+  await setValueAtAddress(host, account.address,'1187', contractAbi, contractDeployedAtAddress );
+  console.log("Verify the updated value that was set .. " )
+  await getValueAtAddress(host, contractAbi, contractDeployedAtAddress);
+}
+
 main()
